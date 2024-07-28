@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, StyleSheet, Button } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { setLoggedIn } from '../actions/authActions';
+import { setLoggedIn } from '../redux/actions/authActions';
 
 const Login = () => {
   const dispatch = useDispatch();
