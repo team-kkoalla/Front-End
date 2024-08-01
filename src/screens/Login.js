@@ -1,19 +1,12 @@
 import React from 'react';
 import { SafeAreaView, Text, StyleSheet, Button } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { setLoggedIn } from '../redux/actions/authActions';
 
 const Login = () => {
-  const dispatch = useDispatch();
-
-  const handleLogin = () => {
-    dispatch(setLoggedIn(true));
-  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Login Screen (Placeholder)</Text>
-      <Button title="Login" onPress={handleLogin} />
+      <Text>Login Screen</Text>
+      <Button title="Login" />
     </SafeAreaView>
   );
 };
