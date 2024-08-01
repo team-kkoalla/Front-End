@@ -55,7 +55,7 @@ const MainTabNavigator = () => {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          height: 70,
+          height: 85,
         },
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
@@ -63,7 +63,7 @@ const MainTabNavigator = () => {
           if (route.name === 'Home') {
             iconName = focused ? 'home-sharp' : 'home-outline';
           } else if (route.name === 'Badge') {
-            iconName = focused ? 'trophy' : 'trophy-outline';
+            iconName = focused ? 'ribbon' : 'ribbon-outline';
           } else if (route.name === 'Search') {
             iconName = focused ? 'search' : 'search-outline';
           } else if (route.name === 'MyPage') {
@@ -73,7 +73,18 @@ const MainTabNavigator = () => {
         },
       })}>
       <Tab.Screen name="Home" component={HomeStackNavigator} />
-      <Tab.Screen name="Badge" component={Badge} options={{headerShown: true}} />
+      <Tab.Screen
+        name="Badge"
+        component={Badge}
+        options={{
+          headerShown: true,
+          title: '나의 업적',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
       <Tab.Screen name="Search" component={SearchStackNavigator} />
       <Tab.Screen name="MyPage" component={MyPageStackNavigator} />
     </Tab.Navigator>
