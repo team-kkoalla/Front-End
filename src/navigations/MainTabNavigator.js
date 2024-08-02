@@ -40,8 +40,28 @@ function SearchStackNavigator() {
 function MyPageStackNavigator() {
   return (
     <MyPageStack.Navigator>
-      <MyPageStack.Screen name="MyPageScreen" component={MyPage} />
-      <MyPageStack.Screen name="Like" component={Like} />
+      <MyPageStack.Screen
+        name="MyPageScreen"
+        component={MyPage}
+        options={{
+          title: '마이',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <MyPageStack.Screen
+        name="Like"
+        component={Like}
+        options={{
+          title: '찜',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
       <MyPageStack.Screen name="BookingList" component={BookingList} />
     </MyPageStack.Navigator>
   );
