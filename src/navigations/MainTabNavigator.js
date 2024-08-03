@@ -62,7 +62,17 @@ function MyPageStackNavigator() {
           },
         }}
       />
-      <MyPageStack.Screen name="BookingList" component={BookingList} />
+      <MyPageStack.Screen
+        name="BookingList"
+        component={BookingList}
+        options={{
+          title: '찜',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
     </MyPageStack.Navigator>
   );
 }

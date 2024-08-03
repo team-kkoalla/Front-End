@@ -14,11 +14,15 @@ const MyPageMenu = () => {
         <Ionicons name="heart-outline" size={24} style={styles.icon} />
         <Text style={styles.menuText}>내가 찜한 양조장</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuItem}>
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => navigation.navigate('BookingList')}>
         <Ionicons name="calendar-outline" size={24} style={styles.icon} />
         <Text style={styles.menuText}>예약현황 관리</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuItem}>
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => navigation.navigate('Badge')}>
         <Ionicons name="ribbon-outline" size={24} style={styles.icon} />
         <Text style={styles.menuText}>나의 업적</Text>
       </TouchableOpacity>
