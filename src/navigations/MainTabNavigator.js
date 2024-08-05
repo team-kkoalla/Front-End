@@ -10,6 +10,7 @@ import BreweryDetail from '../screens/BreweryDetail';
 import Like from '../screens/Like';
 import BookingList from '../screens/BookingList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Text} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -19,7 +20,17 @@ const MyPageStack = createNativeStackNavigator();
 function HomeStackNavigator() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="HomeScreen" component={Home} />
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{
+          title: 'kkoalla',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
       <HomeStack.Screen name="Search" component={Search} />
       <HomeStack.Screen name="BreweryList" component={BreweryList} />
       <HomeStack.Screen name="BreweryDetail" component={BreweryDetail} />
@@ -66,7 +77,7 @@ function MyPageStackNavigator() {
         name="BookingList"
         component={BookingList}
         options={{
-          title: '찜',
+          title: '예약 목록',
           headerTitleStyle: {
             fontSize: 20,
             fontWeight: 'bold',
@@ -82,7 +93,7 @@ const MainTabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarHideOnKeyboard: true,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true, // 라벨 표시를 활성화
         headerShown: false,
         tabBarStyle: {
           height: 85,
@@ -101,6 +112,26 @@ const MainTabNavigator = () => {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+        tabBarLabel: ({focused}) => {
+          let label;
+          if (route.name === 'Home') {
+            label = '홈';
+          } else if (route.name === 'Badge') {
+            label = '업적';
+          } else if (route.name === 'Search') {
+            label = '검색';
+          } else if (route.name === 'MyPage') {
+            label = '마이';
+          }
+
+          return (
+            <Text style={{color: focused ? '#000' : '#888', fontSize: 12}}>
+              {label}
+            </Text>
+          );
+        },
+        tabBarActiveTintColor: '#000',
+        tabBarInactiveTintColor: '#888',
       })}>
       <Tab.Screen name="Home" component={HomeStackNavigator} />
       <Tab.Screen
