@@ -1,9 +1,13 @@
-import { SafeAreaView, Text } from "react-native";
+import {SafeAreaView} from 'react-native';
+import MyPageProfile from '../components/MyPageProfile';
+import MyPageMenu from '../components/MyPageMenu';
+import React from 'react';
 
 const MyPage = () => {
   return (
     <SafeAreaView>
-      <Text> MyPage </Text>
+      <MyPageProfile />
+      <MyPageMenu />
     </SafeAreaView>
   );
 };
