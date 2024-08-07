@@ -11,6 +11,8 @@ import Like from '../screens/Like';
 import BookingList from '../screens/BookingList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Text} from 'react-native';
+import Logout from '../screens/Logout';
+import Unregister from "../components/Unregister";
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -78,6 +80,29 @@ function MyPageStackNavigator() {
         component={BookingList}
         options={{
           title: '예약 목록',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <MyPageStack.Screen
+        name="Logout"
+        component={Logout}
+        options={{
+          title: '로그아웃',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
+      <MyPageStack.Screen
+        name="Unregister"
+        component={Unregister}
+        options={{
+          title: '회원탈퇴',
           headerTitleStyle: {
             fontSize: 20,
             fontWeight: 'bold',

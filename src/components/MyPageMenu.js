@@ -26,7 +26,9 @@ const MyPageMenu = () => {
         <Ionicons name="ribbon-outline" size={24} style={styles.icon} />
         <Text style={styles.menuText}>나의 업적</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.menuItem}>
+      <TouchableOpacity
+        style={styles.menuItem}
+        onPress={() => navigation.navigate('Logout')}>
         <Ionicons name="log-out-outline" size={24} style={styles.icon} />
         <Text style={styles.menuText}>로그아웃</Text>
       </TouchableOpacity>

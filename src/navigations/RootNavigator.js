@@ -6,6 +6,7 @@ import MainTabNavigator from './MainTabNavigator';
 
 const Stack = createNativeStackNavigator();
 
+// 나중에 로그인 기능 구현되면, AuthNavigator랑 MainTabNavigator 순서 바꿔주면 됨
 const RootNavigator = () => {
   return (
     <NavigationContainer>
