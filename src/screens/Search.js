@@ -1,5 +1,5 @@
-import { SafeAreaView, Text } from "react-native";
-import React from "react";
+import {SafeAreaView, Text} from 'react-native';
+import React from 'react';
 
 const Search = () => {
   return (

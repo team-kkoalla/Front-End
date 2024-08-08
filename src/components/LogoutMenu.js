@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const LogoutMenu = () => {
   const navigation = useNavigation();
@@ -10,12 +11,18 @@ const LogoutMenu = () => {
       <TouchableOpacity
         style={styles.menuItem}
         onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.menuText}>로그아웃</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.menuText}>로그아웃</Text>
+          <Ionicons name="chevron-forward-outline" size={20} />
+        </View>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.menuItem}
         onPress={() => navigation.navigate('Unregister')}>
-        <Text style={styles.menuText}>회원탈퇴</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.menuText}>회원탈퇴</Text>
+          <Ionicons name="chevron-forward-outline" size={20} />
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -38,6 +45,11 @@ const styles = StyleSheet.create({
   menuText: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
 

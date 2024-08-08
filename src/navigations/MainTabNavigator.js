@@ -12,7 +12,7 @@ import BookingList from '../screens/BookingList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Text} from 'react-native';
 import Logout from '../screens/Logout';
-import Unregister from "../components/Unregister";
+import Unregister from '../components/Unregister';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -43,7 +43,7 @@ function HomeStackNavigator() {
 function SearchStackNavigator() {
   return (
     <SearchStack.Navigator>
-      <SearchStack.Screen name="SearchScreen" component={Search} />
+      <SearchStack.Screen name="Search" component={Search} />
       <SearchStack.Screen name="BreweryList" component={BreweryList} />
       <SearchStack.Screen name="BreweryDetail" component={BreweryDetail} />
     </SearchStack.Navigator>
