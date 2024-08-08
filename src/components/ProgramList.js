@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 
 const programs = [
   {
@@ -22,28 +22,28 @@ const programs = [
   },
   {
     id: 3,
-    name: '놀라운 양조장',
-    status: '모집마감',
+    name: '와와 양조장',
+    status: '마감임박',
     region: '00구 00동',
-    applicants: 40,
+    applicants: 30,
     capacity: 40,
-    timePassed: true,
+    timePassed: false,
   },
   {
     id: 4,
-    name: '상상 양조장',
+    name: '와와 양조장',
     status: '마감임박',
     region: '00구 00동',
-    applicants: 25,
-    capacity: 30,
+    applicants: 30,
+    capacity: 40,
     timePassed: false,
   },
   {
     id: 5,
-    name: '픽미픽미 양조장',
-    status: '모집중',
+    name: '와와 양조장',
+    status: '마감임박',
     region: '00구 00동',
-    applicants: 5,
+    applicants: 30,
     capacity: 40,
     timePassed: false,
   },
@@ -60,41 +60,34 @@ const getStatusBadge = (applicants, capacity, timePassed) => {
 };
 
 const ProgramList = () => {
-  const renderItem = ({item}) => {
-    const badge = getStatusBadge(
-      item.applicants,
-      item.capacity,
-      item.timePassed,
-    );
-    return (
-      <View style={styles.programItem}>
-        <Image
-          style={styles.programImage}
-          source={{uri: 'https://via.placeholder.com/100'}}
-        />
-        <View style={styles.programDetails}>
-          <Text style={styles.programName}>{item.name}</Text>
-          <Text style={styles.programRegion}>{item.region}</Text>
-        </View>
-        <View style={styles.statusRow}>
-          <View style={[styles.statusBadge, badge.style]}>
-            <Text style={styles.badgeText}>{badge.label}</Text>
-          </View>
-          <Text style={styles.applicantText}>지원자/신청자</Text>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>모집중인 프로그램</Text>
-      <FlatList
-        data={programs}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-        contentContainerStyle={styles.listContainer}
-      />
+      {programs.map(item => {
+        const badge = getStatusBadge(
+          item.applicants,
+          item.capacity,
+          item.timePassed,
+        );
+        return (
+          <View key={item.id} style={styles.programItem}>
+            <Image
+              style={styles.programImage}
+              source={{uri: 'https://via.placeholder.com/100'}}
+            />
+            <View style={styles.programDetails}>
+              <Text style={styles.programName}>{item.name}</Text>
+              <Text style={styles.programRegion}>{item.region}</Text>
+            </View>
+            <View style={styles.statusRow}>
+              <View style={[styles.statusBadge, badge.style]}>
+                <Text style={styles.badgeText}>{badge.label}</Text>
+              </View>
+              <Text style={styles.applicantText}>지원자/신청자</Text>
+            </View>
+          </View>
+        );
+      })}
     </View>
   );
 };
