@@ -8,7 +8,7 @@ const regions = [
   {name: '충청남도', image: 'https://via.placeholder.com/60/98FB98'},
   {name: '경상북도', image: 'https://via.placeholder.com/60/B0E0E6'},
   {name: '경상남도', image: 'https://via.placeholder.com/60/AFEEEE'},
-  {name: '전북도', image: 'https://via.placeholder.com/60/D3D3D3'},
+  {name: '전라북도', image: 'https://via.placeholder.com/60/D3D3D3'},
   {name: '전라남도', image: 'https://via.placeholder.com/60/FFB6C1'},
 ];
 

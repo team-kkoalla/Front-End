@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, View, StyleSheet} from 'react-native';
-import LikeItem from '../components/LikeItem';
+import BreweryItem from '../components/common/breweryItem';
 
 const data = [
   {id: '1', title: '양조장 프로그램 이름', subtitle: '양조장 이름'},
@@ -19,7 +19,7 @@ const Like = () => {
       <View style={styles.gridContainer}>
         {data.map(item => (
           <View key={item.id} style={styles.itemContainer}>
-            <LikeItem title={item.title} subtitle={item.subtitle} />
+            <BreweryItem title={item.title} subtitle={item.subtitle} />
           </View>
         ))}
       </View>

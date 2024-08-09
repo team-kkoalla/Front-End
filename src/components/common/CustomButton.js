@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const CustomButton = ({ label, onPress, type = 'filled', size = 'medium' }) => {
+const CustomButton = ({label, onPress, type = 'filled', size = 'medium'}) => {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ const CustomButton = ({ label, onPress, type = 'filled', size = 'medium' }) => {
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => {
         setIsPressed(false);
-        onPress();  // onPress 이벤트 트리거
+        onPress();
       }}
     >
       <Text

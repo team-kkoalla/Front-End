@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const LikeItem = ({title, subtitle}) => {
+const BreweryItem = ({title, subtitle}) => {
   const [isLiked, setIsLiked] = useState(true);
 
   const toggleLike = () => {
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LikeItem;
+export default BreweryItem;

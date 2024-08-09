@@ -1,17 +1,17 @@
 import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeSearch = () => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <Ionicons name="search" size={20} color="#ccc" style={styles.icon} />
-      <TextInput
-        style={styles.input}
-        placeholder="전체 도시, 지역 검색"
-        placeholderTextColor="#ccc"
-      />
-    </View>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate('Search')}>
+      <Ionicons name="search" size={25} color="#ccc" style={styles.icon} />
+      <Text style={styles.inputText}>전체 도시, 지역 검색</Text>
+    </TouchableOpacity>
   );
 };
 
@@ -23,14 +23,16 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     borderWidth: 1,
+    borderColor: '#ccc',
     marginTop: 20,
   },
   icon: {
-    marginRight: 8,
+    marginRight: 10,
   },
-  input: {
+  inputText: {
     flex: 1,
     fontSize: 16,
+    color: '#666',
   },
 });
 

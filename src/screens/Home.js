@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import HomeSearch from '../components/HomeSearch';
 import RegionList from '../components/RegionList';
 import ProgramList from '../components/ProgramList';
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <HomeSearch />
       <RegionList />
       <ProgramList />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -23,3 +23,4 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+

@@ -10,6 +10,9 @@ import BreweryDetail from '../screens/BreweryDetail';
 import Like from '../screens/Like';
 import BookingList from '../screens/BookingList';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Text} from 'react-native';
+import Logout from '../screens/Logout';
+import Unregister from '../components/Unregister';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -19,7 +22,17 @@ const MyPageStack = createNativeStackNavigator();
 function HomeStackNavigator() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="HomeScreen" component={Home} />
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{
+          title: 'kkoalla',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
       <HomeStack.Screen name="Search" component={Search} />
       <HomeStack.Screen name="BreweryList" component={BreweryList} />
       <HomeStack.Screen name="BreweryDetail" component={BreweryDetail} />
@@ -30,7 +43,7 @@ function HomeStackNavigator() {
 function SearchStackNavigator() {
   return (
     <SearchStack.Navigator>
-      <SearchStack.Screen name="SearchScreen" component={Search} />
+      <SearchStack.Screen name="Search" component={Search} />
       <SearchStack.Screen name="BreweryList" component={BreweryList} />
       <SearchStack.Screen name="BreweryDetail" component={BreweryDetail} />
     </SearchStack.Navigator>
@@ -66,7 +79,30 @@ function MyPageStackNavigator() {
         name="BookingList"
         component={BookingList}
         options={{
-          title: '찜',
+          title: '예약 목록',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <MyPageStack.Screen
+        name="Logout"
+        component={Logout}
+        options={{
+          title: '로그아웃',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
+      <MyPageStack.Screen
+        name="Unregister"
+        component={Unregister}
+        options={{
+          title: '회원탈퇴',
           headerTitleStyle: {
             fontSize: 20,
             fontWeight: 'bold',
@@ -82,7 +118,7 @@ const MainTabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarHideOnKeyboard: true,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true, // 라벨 표시를 활성화
         headerShown: false,
         tabBarStyle: {
           height: 85,
@@ -101,6 +137,26 @@ const MainTabNavigator = () => {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+        tabBarLabel: ({focused}) => {
+          let label;
+          if (route.name === 'Home') {
+            label = '홈';
+          } else if (route.name === 'Badge') {
+            label = '업적';
+          } else if (route.name === 'Search') {
+            label = '검색';
+          } else if (route.name === 'MyPage') {
+            label = '마이';
+          }
+
+          return (
+            <Text style={{color: focused ? '#000' : '#888', fontSize: 12}}>
+              {label}
+            </Text>
+          );
+        },
+        tabBarActiveTintColor: '#000',
+        tabBarInactiveTintColor: '#888',
       })}>
       <Tab.Screen name="Home" component={HomeStackNavigator} />
       <Tab.Screen
