@@ -104,10 +104,10 @@ const styles = StyleSheet.create({
   programItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
+    padding: 10,
     backgroundColor: '#fff',
     borderRadius: 8,
-    marginBottom: 16,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: '#ddd',
   },
