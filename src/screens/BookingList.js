@@ -1,8 +1,11 @@
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import BookingItem from '../components/BookingItem';
+import BookingItem from '../components/common/BookingItem';
+import { useNavigation } from "@react-navigation/native";
 
 const BookingList = () => {
+  const navigation = useNavigation();
+
   const data = [
     {
       id: '1',
@@ -39,7 +42,7 @@ const BookingList = () => {
             }}
             showButton={true}
             buttonLabel="취소/환불"
-            onButtonPress={() => console.log('Button Pressed')}
+            onButtonPress={() => navigation.navigate('BookingCancel')}
           />
         )}
         keyExtractor={item => item.id}

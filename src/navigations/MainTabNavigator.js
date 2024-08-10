@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Badge from '../screens/Badge';
@@ -13,6 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Text} from 'react-native';
 import Logout from '../screens/Logout';
 import Unregister from '../components/Unregister';
+import BookingCancel from '../screens/BookingCancel';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -86,6 +88,19 @@ function MyPageStackNavigator() {
           },
         }}
       />
+
+      <MyPageStack.Screen
+        name="BookingCancel"
+        component={BookingCancel}
+        options={{
+          title: '취소/환불요청',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
       <MyPageStack.Screen
         name="Logout"
         component={Logout}
@@ -118,11 +133,25 @@ const MainTabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarHideOnKeyboard: true,
-        tabBarShowLabel: true, // 라벨 표시를 활성화
+        tabBarShowLabel: true,
         headerShown: false,
-        tabBarStyle: {
-          height: 85,
-        },
+        tabBarStyle: (route => {
+          const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+          if (
+            routeName === 'Search' ||
+            routeName === 'BreweryList' ||
+            routeName === 'BreweryDetail' ||
+            routeName === 'Like' ||
+            routeName === 'BookingList' ||
+            routeName === 'Logout' ||
+            routeName === 'Unregister'
+          ) {
+            return {display: 'none'};
+          }
+          return {
+            height: 85,
+          };
+        })(route),
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const regions = [
   {name: '서울/경기도', image: 'https://via.placeholder.com/60/E6E6FA'},
@@ -13,13 +14,22 @@ const regions = [
 ];
 
 const RegionList = () => {
+  const navigation = useNavigation();
+
+  const handleRegionPress = (regionName) => {
+    navigation.navigate('BreweryList', {regionName});
+  };
+
   return (
     <View style={styles.container}>
       {regions.map((region, index) => (
-        <View key={index} style={styles.regionItem}>
+        <TouchableOpacity
+          key={index}
+          style={styles.regionItem}
+          onPress={() => handleRegionPress(region.name)}>
           <Image source={{uri: region.image}} style={styles.regionImage} />
           <Text style={styles.regionText}>{region.name}</Text>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );
@@ -37,14 +47,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     marginTop: 30,
-    shadowColor: '#000', // 그림자 색상
-    shadowOffset: {width: 0, height: 2}, // 그림자 위치
-    shadowOpacity: 0.25, // 그림자 투명도
-    shadowRadius: 3.0, // 그림자 반경
-    elevation: 5, // Android의 그림자 효과
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.0,
+    elevation: 5,
   },
   regionItem: {
-    width: '22%', // 4개씩 정렬하기 위해 설정
+    width: '22%',
     marginBottom: 16,
     alignItems: 'center',
   },

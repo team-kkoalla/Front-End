@@ -29,8 +29,8 @@ const BreweryItem = ({title, subtitle}) => {
           color="red"
         />
       </TouchableOpacity>
-      <Text style={styles.subtitle}>{subtitle}</Text>
       <Text style={styles.title}>{title}</Text>
+      <Text style={styles.subtitle}>{subtitle}</Text>
     </View>
   );
 };
@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     backgroundColor: '#fff',
-    borderRadius: 8,
+    borderRadius: 2,
     overflow: 'hidden',
     position: 'relative',
   },
   image: {
     width: '100%',
-    height: Dimensions.get('window').width / 2 - 70,
+    height: Dimensions.get('window').width / 2 - 50,
   },
   icon: {
     position: 'absolute',
@@ -57,15 +57,12 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 11,
     color: '#666',
-    marginTop: 8,
-    marginHorizontal: 8,
   },
   title: {
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: 'bold',
     marginTop: 4,
-    marginHorizontal: 8,
-    marginBottom: 8,
+    marginBottom: 5,
   },
 });
 

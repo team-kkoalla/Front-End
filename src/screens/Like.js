@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, View, StyleSheet} from 'react-native';
-import BreweryItem from '../components/common/breweryItem';
+import BreweryItem from '../components/common/BreweryItem';
 
 const data = [
   {id: '1', title: '양조장 프로그램 이름', subtitle: '양조장 이름'},
@@ -30,6 +30,7 @@ const Like = () => {
 const styles = StyleSheet.create({
   listContainer: {
     padding: 10,
+    backgroundColor: '#fff',
   },
   gridContainer: {
     flexDirection: 'row',

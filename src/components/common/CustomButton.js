@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
 const CustomButton = ({label, onPress, type = 'filled', size = 'medium'}) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -54,15 +54,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5', // 눌렸을 때 테두리 버튼 배경색
   },
   medium: {
-    paddingVertical: 10,
-    paddingHorizontal: 16,
+    paddingVertical: 9,
+    paddingHorizontal: 22,
   },
   large: {
-    paddingVertical: 14,
-    paddingHorizontal: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
   },
   buttonText: {
-    fontWeight: 'bold',
+    fontWeight: 'light',
   },
   filledText: {
     color: '#fff', // 기본 채워진 버튼 텍스트 색
