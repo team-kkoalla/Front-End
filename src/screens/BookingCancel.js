@@ -1,17 +1,46 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import CustomInput from '../components/common/CustomInput';
 import CustomButton from '../components/common/CustomButton';
 import BookingItem from '../components/common/BookingItem';
+import CustomPickerModal from '../components/common/CustomPickerModal';
+
+const banks = [
+  {label: '신한은행', value: 'shinhan'},
+  {label: '국민은행', value: 'kookmin'},
+  {label: '우리은행', value: 'woori'},
+  {label: '하나은행', value: 'hana'},
+  {label: 'SC제일은행', value: 'jeil'},
+  {label: '케이뱅크', value: 'kbank'},
+  {label: '카카오뱅크', value: 'kakao'},
+  {label: '토스뱅크', value: 'toss'},
+];
 
 const BookingCancel = () => {
   const [selectedBank, setSelectedBank] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // 모달 열기
+  const openModal = () => setIsModalVisible(true);
+
+  // 모달 닫기
+  const closeModal = () => setIsModalVisible(false);
+
+  // 은행 선택
+  const selectBank = item => {
+    setSelectedBank(item.label);
+    closeModal();
+  };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.programContainer}>
-        {/* 재활용한 BookingItem 컴포넌트 */}
         <BookingItem
           item={{
             programName: '양조장 프로그램 이름',
@@ -21,55 +50,62 @@ const BookingCancel = () => {
         />
       </View>
 
-      <Text style={styles.sectionTitle}>환불 계좌 정보 작성</Text>
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>환불 계좌 정보 작성</Text>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>환불 계좌 은행</Text>
+          <TouchableOpacity style={styles.pickerContainer} onPress={openModal}>
+            <Text style={styles.selectedBankText}>
+              {selectedBank || '은행을 선택해주세요'}
+            </Text>
+          </TouchableOpacity>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>환불 계좌 은행</Text>
-        <View style={styles.pickerContainer}>
-          <Picker
-            selectedValue={selectedBank}
-            onValueChange={itemValue => setSelectedBank(itemValue)}>
-            <Picker.Item label="은행을 선택해주세요" value="" />
-            <Picker.Item label="신한은행" value="shinhan" />
-            <Picker.Item label="국민은행" value="kookmin" />
-            <Picker.Item label="우리은행" value="woori" />
-            <Picker.Item label="하나은행" value="hana" />
-          </Picker>
+          <CustomInput
+            label="환불 계좌 번호"
+            placeholder="환불 계좌 번호를 입력해주세요"
+          />
+          <CustomInput
+            label="환불 계좌 예금주"
+            placeholder="예금주명을 입력해주세요"
+          />
         </View>
 
-        <CustomInput
-          label="환불 계좌 번호"
-          placeholder="환불 계좌 번호를 입력해주세요"
-        />
-        <CustomInput
-          label="환불 계좌 예금주"
-          placeholder="예금주명을 입력해주세요"
+        <CustomButton
+          label="취소/환불 요청"
+          onPress={() => alert('취소/환불 요청이 제출되었습니다.')}
+          type="outline"
+          size="medium"
         />
       </View>
 
-      <CustomButton
-        label="취소/환불 요청"
-        onPress={() => alert('취소/환불 요청이 제출되었습니다.')}
-        type="outline"
-        size="large"
+      <CustomPickerModal
+        visible={isModalVisible}
+        onClose={closeModal}
+        items={banks}
+        onSelect={selectBank}
       />
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 10,
     backgroundColor: '#fff',
     flex: 1,
   },
   programContainer: {
-    marginBottom: 20,
+    marginBottom: -20,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  sectionContainer: {
+    padding: 20,
+    backgroundColor: '#fff',
+    marginBottom: 0,
   },
   inputContainer: {
     marginBottom: 20,
@@ -82,12 +118,13 @@ const styles = StyleSheet.create({
   pickerContainer: {
     borderWidth: 1,
     borderColor: '#ddd',
-    borderRadius: 4,
+    borderRadius: 10,
     marginBottom: 20,
+    padding: 12,
   },
-  picker: {
-    height: 50,
-    width: '100%',
+  selectedBankText: {
+    fontSize: 14,
+    color: '#000',
   },
 });
 

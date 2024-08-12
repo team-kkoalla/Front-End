@@ -38,43 +38,43 @@ const styles = StyleSheet.create({
     minWidth: 100,
   },
   filled: {
-    backgroundColor: '#333', // 기본 채워진 버튼 배경색
+    backgroundColor: '#333',
   },
   filledPressed: {
-    backgroundColor: '#555', // 눌렸을 때 채워진 버튼 배경색
+    backgroundColor: '#555',
   },
   outline: {
     borderWidth: 1,
-    borderColor: '#333', // 기본 테두리 색
-    backgroundColor: '#fff', // 기본 테두리 버튼 배경색
+    borderColor: '#333',
+    backgroundColor: '#fff',
   },
   outlinePressed: {
     borderWidth: 1,
-    borderColor: '#555', // 눌렸을 때 테두리 색
-    backgroundColor: '#f5f5f5', // 눌렸을 때 테두리 버튼 배경색
+    borderColor: '#555',
+    backgroundColor: '#f5f5f5',
   },
   medium: {
-    paddingVertical: 9,
-    paddingHorizontal: 22,
+    paddingVertical: 8, // medium 스타일에 대한 적절한 padding 설정
+    paddingHorizontal: 16,
   },
   large: {
-    paddingVertical: 12,
-    paddingHorizontal: 10,
+    paddingVertical: 12, // large 스타일에 대한 적절한 padding 설정
+    paddingHorizontal: 24,
   },
   buttonText: {
     fontWeight: 'light',
   },
   filledText: {
-    color: '#fff', // 기본 채워진 버튼 텍스트 색
+    color: '#fff',
   },
   filledTextPressed: {
-    color: '#eee', // 눌렸을 때 채워진 버튼 텍스트 색
+    color: '#eee',
   },
   outlineText: {
-    color: '#333', // 기본 테두리 버튼 텍스트 색
+    color: '#333',
   },
   outlineTextPressed: {
-    color: '#555', // 눌렸을 때 테두리 버튼 텍스트 색
+    color: '#555',
   },
   mediumText: {
     fontSize: 14,
