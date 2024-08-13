@@ -15,7 +15,9 @@ const data = [
 
 const Like = () => {
   return (
-    <ScrollView contentContainerStyle={styles.listContainer}>
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.listContainer}>
       <View style={styles.gridContainer}>
         {data.map(item => (
           <View key={item.id} style={styles.itemContainer}>
@@ -28,9 +30,12 @@ const Like = () => {
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   listContainer: {
     padding: 10,
-    backgroundColor: '#fff',
   },
   gridContainer: {
     flexDirection: 'row',

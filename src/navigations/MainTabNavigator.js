@@ -15,6 +15,7 @@ import {Text} from 'react-native';
 import Logout from '../screens/Logout';
 import Unregister from '../components/Unregister';
 import BookingCancel from '../screens/BookingCancel';
+import BookingCancelDone from '../screens/BookingCancelDone';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -92,6 +93,18 @@ function MyPageStackNavigator() {
       <MyPageStack.Screen
         name="BookingCancel"
         component={BookingCancel}
+        options={{
+          title: '취소/환불요청',
+          headerTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
+      <MyPageStack.Screen
+        name="BookingCancelDone"
+        component={BookingCancelDone}
         options={{
           title: '취소/환불요청',
           headerTitleStyle: {

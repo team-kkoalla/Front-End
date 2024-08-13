@@ -10,6 +10,7 @@ import CustomInput from '../components/common/CustomInput';
 import CustomButton from '../components/common/CustomButton';
 import BookingItem from '../components/common/BookingItem';
 import CustomPickerModal from '../components/common/CustomPickerModal';
+import {useNavigation} from '@react-navigation/native';
 
 const banks = [
   {label: '신한은행', value: 'shinhan'},
@@ -23,8 +24,13 @@ const banks = [
 ];
 
 const BookingCancel = () => {
+  const navigation = useNavigation();
   const [selectedBank, setSelectedBank] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handelCancel = () => {
+    navigation.navigate('BookingCancelDone');
+  };
 
   // 모달 열기
   const openModal = () => setIsModalVisible(true);
@@ -69,13 +75,14 @@ const BookingCancel = () => {
             placeholder="예금주명을 입력해주세요"
           />
         </View>
-
-        <CustomButton
-          label="취소/환불 요청"
-          onPress={() => alert('취소/환불 요청이 제출되었습니다.')}
-          type="outline"
-          size="medium"
-        />
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            label="취소/환불 요청"
+            onPress={handelCancel}
+            type="outline"
+            size="medium"
+          />
+        </View>
       </View>
 
       <CustomPickerModal
@@ -100,12 +107,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginTop: -20,
+    marginBottom: 15,
   },
   sectionContainer: {
     padding: 20,
     backgroundColor: '#fff',
-    marginBottom: 0,
   },
   inputContainer: {
     marginBottom: 20,
@@ -125,6 +132,9 @@ const styles = StyleSheet.create({
   selectedBankText: {
     fontSize: 14,
     color: '#000',
+  },
+  buttonContainer: {
+    alignItems: 'flex-end',
   },
 });
 
